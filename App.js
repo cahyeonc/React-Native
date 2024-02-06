@@ -1,6 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import StateWithClassComponent from "./StateWithClassComponent";
 import StateWithFuctionalComponent from "./StateWithFuctionalComponent";
+import UseEffectWithClassComponent from "./UseEffectWithClassComponent";
+import UseEffectWithFunctionalComponent from "./UseEffectWithFunctionalComponent";
+import CustomHook from "./CustomHook";
 import {
   Image,
   Button,
@@ -11,6 +14,7 @@ import {
   View,
   Switch,
 } from "react-native";
+import { useState } from "react";
 
 const Headers = (props) => {
   return <Text>{props.title}</Text>;
@@ -25,12 +29,6 @@ const MyProfile = () => {
       />
     </View>
   );
-};
-const Division = () => {
-  return <Text>Division</Text>;
-};
-const FriendSection = () => {
-  return <Text>FriendSection</Text>;
 };
 const FreiendList = () => {
   return (
@@ -64,15 +62,41 @@ const Profile = (props) => {
 };
 
 export default function App() {
+  const [isTrue, setIsTrue] = useState(true);
   return (
     <View style={styles.container}>
-      <StateWithClassComponent />
-      <StateWithFuctionalComponent />
+      <Text style={styles.text}> Basic Component </Text>
       <Headers title="친구" />
       <MyProfile />
-      <Division />
-      <FriendSection />
       <FreiendList />
+      <ScrollView>
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+        <Image source={require("./cat1.jpeg")} style={styles.local_image} />
+      </ScrollView>
+
+      <StatusBar style="auto" />
+
+      <Text style={styles.text}> StateComponent </Text>
+      {/* <StateWithClassComponent /> */}
+      <StateWithFuctionalComponent />
+
+      {/* <Text style={styles.text}> UseEffectWithClassComponent </Text>
+      {isTrue ? <UseEffectWithClassComponent /> : null}
+      <Button title="toggle" onPress={() => setIsTrue(!isTrue)} /> */}
+
+      <Text style={styles.text}> UseEffectComponent </Text>
+      <UseEffectWithFunctionalComponent />
+      <Text style={styles.text}> CustomHook </Text>
+      <CustomHook />
     </View>
   );
 }
